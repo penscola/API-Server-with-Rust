@@ -11,7 +11,7 @@ pub struct Owner {
     pub address: String,
 }
 
-#[derive(Debug, Deserialize, SerializBookingRequeste)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct OwnerRequest {
     pub name: String,
     pub email: String,

@@ -2,12 +2,24 @@ use std::time::SystemTime;
 use chrono::Utc;
 use mongodb::bson::{oid::ObjectId, DateTime};
 use serde::{Deserialize, Serialize};
+use crate::models::dog_model::Dog;
+use crate::models::owner_model::Owner;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Booking {
     pub _id: ObjectId,
     pub owner: ObjectId,
     pub  start_time: DateTime,
+    pub duration_in_minutes: u8,
+    pub cancelled: bool,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct FullBooking {
+    pub _id: ObjectId,
+    pub owner: Owner,
+    pub dogs: Vec<Dog>,
+    pub start_time: DateTime,
     pub duration_in_minutes: u8,
     pub cancelled: bool,
 }
